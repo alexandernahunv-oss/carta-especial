@@ -3,148 +3,404 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Para alguien especial 💜</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: Georgia, serif;
-            background: #09070d;
+            background: #08060b;
             color: white;
-            min-height: 100vh;
             overflow-x: hidden;
         }
 
+        /* =========================
+           ✏️ EDITA AQUÍ
+        ========================= */
+
+        :root {
+            --morado: #a855f7;
+            --morado-claro: #d8b4fe;
+            --morado-oscuro: #241033;
+            --negro: #08060b;
+        }
+
+        /* =========================
+           PANTALLA INICIAL
+        ========================= */
+
         .inicio {
             min-height: 100vh;
+
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
             text-align: center;
-            padding: 25px;
-            position: relative;
+
+            padding: 30px;
+
             background:
-                radial-gradient(circle at top, #35105c 0%, #12091b 35%, #09070d 75%);
+                radial-gradient(
+                    circle at center,
+                    #32124d 0%,
+                    #14091d 40%,
+                    #08060b 80%
+                );
+
+            position: relative;
+            overflow: hidden;
         }
 
-        .flores {
-            font-size: 35px;
+        .inicio h1 {
+            font-size: clamp(38px, 9vw, 70px);
+            color: var(--morado-claro);
+
+            text-shadow:
+                0 0 10px var(--morado),
+                0 0 30px var(--morado);
+
+            margin-bottom: 20px;
+
+            animation: aparecer 2s ease;
+        }
+
+        .inicio p {
+            font-size: 20px;
+            color: #eee;
+
+            margin-bottom: 35px;
+
+            animation: aparecer 2.5s ease;
+        }
+
+        .flores-inicio {
+            font-size: 40px;
             margin-bottom: 25px;
+
             animation: flotar 3s ease-in-out infinite;
         }
 
-        h1 {
-            font-size: clamp(35px, 8vw, 65px);
-            color: #d8a4ff;
-            text-shadow: 0 0 20px #8e44ad;
-            margin-bottom: 15px;
-        }
-
-        .subtitulo {
-            font-size: 20px;
-            color: #e8d9f5;
-            margin-bottom: 35px;
-        }
+        /* =========================
+           BOTÓN
+        ========================= */
 
         .boton {
-            border: 2px solid #b56cff;
-            background: transparent;
-            color: #ffffff;
-            padding: 15px 30px;
-            border-radius: 40px;
+            padding: 16px 32px;
+
+            border: 2px solid var(--morado);
+
+            border-radius: 50px;
+
+            background: rgba(168, 85, 247, 0.1);
+
+            color: white;
+
             font-size: 18px;
+
             cursor: pointer;
+
             transition: 0.4s;
-            box-shadow: 0 0 15px rgba(181,108,255,0.4);
+
+            box-shadow:
+                0 0 15px rgba(168,85,247,0.5);
+
+            animation: aparecer 3s ease;
         }
 
         .boton:hover {
-            background: #9b4dca;
+            background: var(--morado);
+
             transform: scale(1.08);
-            box-shadow: 0 0 30px rgba(181,108,255,0.8);
+
+            box-shadow:
+                0 0 35px rgba(168,85,247,0.9);
         }
+
+        /* =========================
+           PÉTALOS
+        ========================= */
+
+        .petalo {
+            position: absolute;
+
+            font-size: 25px;
+
+            opacity: 0.7;
+
+            animation: caer linear infinite;
+        }
+
+        .petalo:nth-child(1) {
+            left: 10%;
+            animation-duration: 8s;
+        }
+
+        .petalo:nth-child(2) {
+            left: 30%;
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+
+        .petalo:nth-child(3) {
+            left: 55%;
+            animation-duration: 7s;
+            animation-delay: 1s;
+        }
+
+        .petalo:nth-child(4) {
+            left: 80%;
+            animation-duration: 11s;
+            animation-delay: 3s;
+        }
+
+        /* =========================
+           CARTA
+        ========================= */
 
         .carta {
             display: none;
+
             min-height: 100vh;
-            padding: 60px 20px;
-            text-align: center;
+
             background:
-                radial-gradient(circle at top, #2b1045, #09070d 70%);
-            animation: aparecer 1.5s ease;
+                linear-gradient(
+                    rgba(8,6,11,0.96),
+                    rgba(15,7,23,0.98)
+                );
+
+            padding: 70px 20px;
         }
 
         .carta.activa {
             display: block;
+
+            animation: aparecer 1.5s ease;
         }
 
         .contenido {
             max-width: 850px;
+
             margin: auto;
+
+            text-align: center;
         }
 
-        .contenido h2 {
-            color: #d8a4ff;
-            font-size: 38px;
-            margin-bottom: 25px;
+        /* =========================
+           TITULO
+        ========================= */
+
+        .titulo-seccion {
+            color: var(--morado-claro);
+
+            font-size: clamp(30px, 7vw, 48px);
+
+            margin-bottom: 30px;
+
+            text-shadow:
+                0 0 15px var(--morado);
         }
 
-        .texto {
+        .texto-carta {
             font-size: 19px;
-            line-height: 1.8;
-            color: #eee;
+
+            line-height: 1.9;
+
+            color: #eeeeee;
+
             margin-bottom: 50px;
         }
 
-        .secciones {
+        /* =========================
+           DIVISOR
+        ========================= */
+
+        .divisor {
+            margin: 50px auto;
+
+            color: var(--morado-claro);
+
+            font-size: 25px;
+        }
+
+        /* =========================
+           TARJETAS
+        ========================= */
+
+        .tarjetas {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
             gap: 25px;
-            margin-top: 40px;
+
+            margin-top: 35px;
         }
 
         .tarjeta {
-            background: rgba(40, 15, 60, 0.7);
-            border: 1px solid #8e44ad;
-            border-radius: 20px;
-            padding: 30px 20px;
-            transition: 0.4s;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(57,20,78,0.8),
+                    rgba(20,10,28,0.9)
+                );
+
+            border: 1px solid #8b3fc4;
+
+            border-radius: 25px;
+
+            padding: 25px;
+
+            transition: 0.5s;
+
+            box-shadow:
+                0 0 20px rgba(168,85,247,0.12);
         }
 
         .tarjeta:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 0 25px rgba(181,108,255,0.35);
+            transform: translateY(-10px);
+
+            box-shadow:
+                0 0 30px rgba(168,85,247,0.35);
         }
 
         .tarjeta h3 {
-            color: #d8a4ff;
+            color: var(--morado-claro);
+
+            font-size: 24px;
+
             margin-bottom: 15px;
-            font-size: 23px;
         }
 
         .tarjeta p {
             color: #ddd;
-            line-height: 1.6;
+
+            line-height: 1.7;
         }
 
+        /* =========================
+           FOTOS
+        ========================= */
+
+        .foto {
+            width: 100%;
+
+            max-width: 330px;
+
+            height: 330px;
+
+            object-fit: cover;
+
+            border-radius: 20px;
+
+            border: 2px solid var(--morado);
+
+            margin: 20px auto;
+
+            display: block;
+
+            box-shadow:
+                0 0 25px rgba(168,85,247,0.3);
+
+            transition: 0.5s;
+        }
+
+        .foto:hover {
+            transform: scale(1.03);
+
+            box-shadow:
+                0 0 40px rgba(168,85,247,0.6);
+        }
+
+        /* =========================
+           MENSAJE ESPECIAL
+        ========================= */
+
+        .mensaje {
+            background: rgba(36,16,51,0.7);
+
+            border-radius: 25px;
+
+            padding: 35px 25px;
+
+            border: 1px solid #7436a5;
+
+            margin-top: 30px;
+        }
+
+        .mensaje p {
+            font-size: 20px;
+
+            line-height: 1.9;
+
+            color: #f3e8ff;
+        }
+
+        /* =========================
+           CORAZÓN
+        ========================= */
+
         .corazon {
-            font-size: 40px;
-            margin: 35px 0;
+            font-size: 55px;
+
+            margin: 40px 0;
+
             animation: latido 1.5s infinite;
         }
 
-        footer {
-            margin-top: 60px;
-            color: #a98bbd;
+        /* =========================
+           FINAL
+        ========================= */
+
+        .final {
+            padding-top: 70px;
+
+            padding-bottom: 40px;
         }
 
+        .final h2 {
+            color: var(--morado-claro);
+
+            font-size: 35px;
+
+            margin-bottom: 20px;
+        }
+
+        .final p {
+            color: #ddd;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+        }
+
+        footer {
+            margin-top: 50px;
+
+            color: #9d7bb5;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           ANIMACIONES
+        ========================= */
+
         @keyframes aparecer {
+
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -154,19 +410,23 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
 
         @keyframes flotar {
+
             0%, 100% {
                 transform: translateY(0);
             }
 
             50% {
-                transform: translateY(-10px);
+                transform: translateY(-12px);
             }
+
         }
 
         @keyframes latido {
+
             0%, 100% {
                 transform: scale(1);
             }
@@ -174,86 +434,365 @@
             50% {
                 transform: scale(1.2);
             }
+
         }
+
+        @keyframes caer {
+
+            0% {
+                top: -10%;
+                transform: rotate(0deg);
+            }
+
+            100% {
+                top: 110%;
+                transform: rotate(360deg);
+            }
+
+        }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- PANTALLA INICIAL -->
 
-    <section class="inicio" id="inicio">
+<!-- =====================================================
+     PANTALLA INICIAL
+===================================================== -->
 
-        <div class="flores">
-            🌸 💜 🌷
+<section class="inicio" id="inicio">
+
+    <!-- Flores animadas -->
+
+    <div class="petalo">🌸</div>
+    <div class="petalo">🌷</div>
+    <div class="petalo">🌸</div>
+    <div class="petalo">🌷</div>
+
+
+    <div class="flores-inicio">
+        🌸 💜 🌷
+    </div>
+
+
+    <!-- ✏️ CAMBIA ESTE TÍTULO -->
+
+    <h1>
+        Para alguien especial
+    </h1>
+
+
+    <!-- ✏️ CAMBIA ESTE TEXTO -->
+
+    <p>
+        Tengo algo que quiero decirte...
+    </p>
+
+
+    <button
+        class="boton"
+        onclick="abrirCarta()">
+
+        💌 Abrir carta
+
+    </button>
+
+</section>
+
+
+
+<!-- =====================================================
+     CARTA
+===================================================== -->
+
+<section
+    class="carta"
+    id="carta">
+
+
+    <div class="contenido">
+
+
+        <div class="corazon">
+            💜
         </div>
 
-        <h1>Para alguien especial</h1>
 
-        <p class="subtitulo">
-            Tengo algo que quiero decirte...
+        <!-- ✏️ CAMBIA EL TÍTULO -->
+
+        <h2 class="titulo-seccion">
+            Hay cosas que merecen quedarse...
+        </h2>
+
+
+        <!-- ✏️ CAMBIA EL TEXTO -->
+
+        <p class="texto-carta">
+
+            Hay personas que llegan a nuestra vida
+            y, sin darnos cuenta, empiezan a formar
+            parte de nuestros recuerdos favoritos.
+
+            <br><br>
+
+            Esta pequeña carta es una forma de guardar
+            algunos de esos momentos y decirte algo
+            que quizá no siempre sé cómo expresar.
+
+            <br><br>
+
+            Gracias por cada sonrisa, cada momento
+            y cada recuerdo.
+
         </p>
 
-        <button class="boton" onclick="abrirCarta()">
-            💌 Abrir carta
-        </button>
-
-    </section>
 
 
-    <!-- CARTA -->
+        <div class="divisor">
+            🌸 ─── 💜 ─── 🌸
+        </div>
 
-    <section class="carta" id="carta">
 
-        <div class="contenido">
 
-            <div class="corazon">
-                💜
+        <!-- =================================================
+             SONRISA QUE GUARDO
+        ================================================== -->
+
+        <div class="tarjeta">
+
+            <h3>
+                😊 Sonrisa que guardo
+            </h3>
+
+
+            <!--
+            ✏️ AQUÍ PONDRÁS LA FOTO DE ELLA
+
+            Cuando tengas la foto, súbela a una carpeta
+            llamada "imagenes" y cambia:
+
+            foto-chica.jpg
+
+            por el nombre exacto de tu fotografía.
+            -->
+
+            <img
+                class="foto"
+                src="imagenes/foto-chica.jpg"
+                alt="Una sonrisa especial">
+
+
+            <!-- ✏️ CAMBIA ESTE TEXTO -->
+
+            <p>
+
+                Hay sonrisas que simplemente hacen
+                que un momento se vuelva especial.
+
+                Y la tuya es una de esas que
+                quiero guardar.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="divisor">
+            🌷 💜 🌷
+        </div>
+
+
+
+        <!-- =================================================
+             MOMENTO PARA RECORDAR
+        ================================================== -->
+
+        <div class="tarjeta">
+
+            <h3>
+                🐶 Un momento para recordar
+            </h3>
+
+
+            <!--
+            ✏️ AQUÍ PONDRÁS LA FOTO DE LA PERRITA
+
+            Sube la foto a "imagenes" y cambia:
+
+            foto-perrita.jpg
+            -->
+
+            <img
+                class="foto"
+                src="imagenes/foto-perrita.jpg"
+                alt="Un recuerdo especial">
+
+
+            <!-- ✏️ CAMBIA ESTE TEXTO -->
+
+            <p>
+
+                Hay momentos pequeños que terminan
+                convirtiéndose en recuerdos enormes.
+
+                Este es uno de esos momentos
+                que vale la pena conservar.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="divisor">
+            🌸 ─── 💜 ─── 🌸
+        </div>
+
+
+
+        <!-- =================================================
+             LO QUE QUIERO DECIRTE
+        ================================================== -->
+
+        <h2 class="titulo-seccion">
+            Lo que quiero decirte
+        </h2>
+
+
+        <div class="mensaje">
+
+            <!-- ✏️ ESCRIBE AQUÍ TU MENSAJE -->
+
+            <p>
+
+                Quizá no siempre encuentro las palabras
+                correctas para decir todo lo que pienso,
+                pero quería dejarte este pequeño detalle.
+
+                <br><br>
+
+                Porque hay personas que merecen saber
+                lo importantes que son.
+
+                <br><br>
+
+                Y tú eres una de ellas.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="divisor">
+            💜
+        </div>
+
+
+
+        <!-- =================================================
+             PEQUEÑOS RECUERDOS
+        ================================================== -->
+
+        <h2 class="titulo-seccion">
+            Pequeños recuerdos 🌸
+        </h2>
+
+
+        <div class="tarjetas">
+
+
+            <div class="tarjeta">
+
+                <h3>
+                    🌷 Un momento
+                </h3>
+
+                <!-- ✏️ CAMBIA EL TEXTO -->
+
+                <p>
+                    Ese momento que quizá parecía
+                    pequeño, pero que terminó siendo
+                    importante.
+                </p>
+
             </div>
 
-            <h2>Hay cosas que merecen quedarse...</h2>
 
-            <p class="texto">
-                Hay personas que llegan a nuestra vida y,
-                sin darse cuenta, comienzan a formar parte
-                de nuestros recuerdos favoritos.
+            <div class="tarjeta">
+
+                <h3>
+                    💜 Una persona
+                </h3>
+
+                <!-- ✏️ CAMBIA EL TEXTO -->
+
+                <p>
+                    Algunas personas dejan una huella
+                    bonita sin siquiera darse cuenta.
+                </p>
+
+            </div>
+
+
+            <div class="tarjeta">
+
+                <h3>
+                    🌸 Un recuerdo
+                </h3>
+
+                <!-- ✏️ CAMBIA EL TEXTO -->
+
+                <p>
+                    Y algunos recuerdos merecen
+                    quedarse para siempre.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             FINAL
+        ================================================== -->
+
+        <div class="final">
+
+            <div class="corazon">
+                ❤️
+            </div>
+
+
+            <!-- ✏️ CAMBIA EL MENSAJE FINAL -->
+
+            <h2>
+                Gracias por existir
+            </h2>
+
+
+            <p>
+
+                Espero que cuando leas esto
+                puedas sonreír un poquito.
+
                 <br><br>
-                Esta pequeña carta es una forma de guardar
-                algunos de esos momentos y decirte algo
-                que quizá no siempre sé cómo expresar.
-                <br><br>
-                Gracias por cada sonrisa, cada momento
-                y cada recuerdo.
+
+                Porque esa sonrisa también
+                es uno de mis recuerdos favoritos.
+
             </p>
 
 
-            <div class="secciones">
-
-                <div class="tarjeta">
-                    <h3>😊 Sonrisa que guardo</h3>
-
-                    <p>
-                        Aquí colocaré una foto y un recuerdo
-                        que siempre quiero conservar.
-                    </p>
-                </div>
-
-
-                <div class="tarjeta">
-                    <h3>🐶 Un momento para recordar</h3>
-
-                    <p>
-                        Un pequeño momento que merece
-                        quedarse para siempre.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="corazon">
+            <div class="divisor">
                 🌸 💜 🌸
             </div>
+
 
             <footer>
                 Hecho con cariño 💜
@@ -261,24 +800,32 @@
 
         </div>
 
-    </section>
+
+    </div>
+
+</section>
 
 
-    <script>
 
-        function abrirCarta() {
+<script>
 
-            document.getElementById("inicio").style.display = "none";
+    function abrirCarta() {
 
-            document.getElementById("carta").classList.add("activa");
+        document.getElementById("inicio").style.display = "none";
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        }
+        document
+            .getElementById("carta")
+            .classList.add("activa");
 
-    </script>
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+</script>
+
 
 </body>
 </html>
