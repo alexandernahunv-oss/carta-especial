@@ -3,1489 +3,1330 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para alguien especial 💜</title>
 
-    <title>Para alguien especial 💜</title>
+<style>
 
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+===================================================== */
 
-    <style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        /* =====================================================
-           CONFIGURACIÓN GENERAL
-        ===================================================== */
+html {
+    scroll-behavior: smooth;
+}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+body {
+    font-family: Georgia, serif;
+    background: #08060b;
+    color: white;
+    overflow-x: hidden;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+:root {
+    --morado: #a855f7;
+    --morado-claro: #d8b4fe;
+    --morado-oscuro: #241033;
+    --negro: #08060b;
+}
 
-        body {
-            font-family: Georgia, serif;
-            background: #08060b;
-            color: white;
-            overflow-x: hidden;
-        }
 
+/* =====================================================
+   PANTALLA INICIAL
+===================================================== */
 
-        /* =====================================================
-           COLORES
-        ===================================================== */
+.inicio {
 
-        :root {
+    min-height: 100vh;
 
-            --morado: #a855f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-            --morado-claro: #d8b4fe;
+    text-align: center;
 
-            --morado-oscuro: #241033;
+    padding: 30px;
 
-            --negro: #08060b;
+    position: relative;
 
-            --rosa: #c084fc;
+    overflow: hidden;
 
-        }
+    background:
+        radial-gradient(
+            circle at center,
+            #32124d 0%,
+            #14091d 40%,
+            #08060b 80%
+        );
 
+    transition: opacity 1.2s ease,
+                transform 1.2s ease;
 
-        /* =====================================================
-           PANTALLA INICIAL
-        ===================================================== */
+}
 
-        .inicio {
 
-            min-height: 100vh;
+.inicio.oculta {
 
-            display: flex;
+    opacity: 0;
 
-            flex-direction: column;
+    transform: scale(1.08);
 
-            justify-content: center;
+    pointer-events: none;
 
-            align-items: center;
+}
 
-            text-align: center;
 
-            padding: 30px;
+.flores-inicio {
 
-            position: relative;
+    font-size: 40px;
 
-            overflow: hidden;
+    margin-bottom: 25px;
 
-            background:
+    animation: flotar 3s ease-in-out infinite;
 
-                radial-gradient(
+    position: relative;
 
-                    circle at center,
+    z-index: 5;
 
-                    #32124d 0%,
+}
 
-                    #14091d 40%,
 
-                    #08060b 80%
+.inicio h1 {
 
-                );
+    font-size: clamp(38px, 9vw, 70px);
 
-        }
+    color: var(--morado-claro);
 
+    text-shadow:
+        0 0 10px var(--morado),
+        0 0 30px var(--morado),
+        0 0 60px rgba(168,85,247,.4);
 
-        .inicio h1 {
+    margin-bottom: 10px;
 
-            font-size: clamp(38px, 9vw, 70px);
+    animation: aparecer 2s ease;
 
-            color: var(--morado-claro);
+    position: relative;
 
-            text-shadow:
+    z-index: 5;
 
-                0 0 10px var(--morado),
+}
 
-                0 0 30px var(--morado),
 
-                0 0 60px rgba(168,85,247,0.4);
+/* NUEVO TEXTO */
 
-            margin-bottom: 20px;
+.subtitulo-inicio {
 
-            animation: aparecer 2s ease;
+    font-size: clamp(24px, 6vw, 34px);
 
-            position: relative;
+    color: #ffffff;
 
-            z-index: 5;
+    margin-bottom: 22px;
 
-        }
+    text-shadow:
+        0 0 10px rgba(216,180,254,.7),
+        0 0 25px rgba(168,85,247,.5);
 
+    animation: aparecer 2.5s ease;
 
-        .inicio p {
+    position: relative;
 
-            font-size: 20px;
+    z-index: 5;
 
-            color: #eee;
+}
 
-            margin-bottom: 35px;
 
-            animation: aparecer 2.5s ease;
+.inicio p {
 
-            position: relative;
+    font-size: 20px;
 
-            z-index: 5;
+    color: #eee;
 
-        }
+    margin-bottom: 35px;
 
+    animation: aparecer 3s ease;
 
-        .flores-inicio {
+    position: relative;
 
-            font-size: 40px;
+    z-index: 5;
 
-            margin-bottom: 25px;
+}
 
-            animation: flotar 3s ease-in-out infinite;
 
-            position: relative;
+/* =====================================================
+   BOTÓN ABRIR
+===================================================== */
 
-            z-index: 5;
+.boton {
 
-        }
+    padding: 16px 34px;
 
+    border: 2px solid var(--morado);
 
-        /* =====================================================
-           BOTÓN PRINCIPAL
-        ===================================================== */
+    border-radius: 50px;
 
-        .boton {
+    background: rgba(168,85,247,.1);
 
-            padding: 16px 32px;
+    color: white;
 
-            border: 2px solid var(--morado);
+    font-size: 18px;
 
-            border-radius: 50px;
+    cursor: pointer;
 
-            background: rgba(168,85,247,0.1);
+    transition: .4s;
 
-            color: white;
+    box-shadow:
+        0 0 15px rgba(168,85,247,.5),
+        inset 0 0 15px rgba(168,85,247,.1);
 
-            font-size: 18px;
+    animation: aparecer 3.5s ease;
 
-            cursor: pointer;
+    position: relative;
 
-            transition: 0.4s;
+    z-index: 10;
 
-            box-shadow:
+}
 
-                0 0 15px rgba(168,85,247,0.5),
 
-                inset 0 0 15px rgba(168,85,247,0.1);
+.boton:hover {
 
-            animation: aparecer 3s ease;
+    background: var(--morado);
 
-            position: relative;
+    transform: scale(1.08);
 
-            z-index: 10;
+    box-shadow:
+        0 0 35px rgba(168,85,247,.9);
 
-        }
+}
 
 
-        .boton:hover {
+.boton:active {
 
-            background: var(--morado);
+    transform: scale(.96);
 
-            transform: scale(1.08);
+}
 
-            box-shadow:
 
-                0 0 35px rgba(168,85,247,0.9);
+/* =====================================================
+   FLORES / NUBECITAS
+===================================================== */
 
-        }
+.nubecita {
 
+    position: fixed;
 
-        .boton:active {
+    z-index: 3;
 
-            transform: scale(0.96);
+    pointer-events: none;
 
-        }
+    color: var(--morado-claro);
 
+    font-size: 28px;
 
-        /* =====================================================
-           FLORES / NUBECITAS FLOTANTES
-        ===================================================== */
+    opacity: .55;
 
-        .nubecita {
+    text-shadow:
+        0 0 12px rgba(168,85,247,.8);
 
-            position: fixed;
+    animation:
+        nubecitaFlotar 6s ease-in-out infinite;
 
-            z-index: 3;
+}
 
-            pointer-events: none;
 
-            color: var(--morado-claro);
+.n1 {
+    top: 12%;
+    left: 7%;
+}
 
-            font-size: 28px;
+.n2 {
+    top: 25%;
+    right: 8%;
+    animation-delay: 1.5s;
+}
 
-            opacity: 0.55;
+.n3 {
+    top: 60%;
+    left: 5%;
+    animation-delay: 3s;
+}
 
-            text-shadow:
+.n4 {
+    top: 75%;
+    right: 7%;
+    animation-delay: 2s;
+}
 
-                0 0 12px rgba(168,85,247,0.8);
+.n5 {
+    top: 43%;
+    left: 14%;
+    animation-delay: 1s;
+}
 
-            animation: nubecitaFlotar 6s ease-in-out infinite;
+.n6 {
+    top: 88%;
+    right: 18%;
+    animation-delay: 3.5s;
+}
 
-        }
 
+/* =====================================================
+   PÉTALOS DE TULIPÁN
+===================================================== */
 
-        .n1 {
+.petalos-tulipan {
 
-            top: 12%;
+    position: fixed;
 
-            left: 7%;
+    inset: 0;
 
-        }
+    width: 100%;
+    height: 100%;
 
+    pointer-events: none;
 
-        .n2 {
+    overflow: hidden;
 
-            top: 25%;
+    z-index: 20;
 
-            right: 8%;
+}
 
-            animation-delay: 1.5s;
 
-        }
+.petalos-tulipan span {
 
+    position: absolute;
 
-        .n3 {
+    top: -50px;
 
-            top: 60%;
+    width: 17px;
+    height: 28px;
 
-            left: 5%;
+    background:
+        linear-gradient(
+            135deg,
+            #e9d5ff,
+            #a855f7 55%,
+            #581c87
+        );
 
-            animation-delay: 3s;
+    border-radius:
+        70% 25% 70% 25%;
 
-        }
+    opacity: 0;
 
+    filter:
+        drop-shadow(
+            0 0 5px rgba(168,85,247,.55)
+        );
 
-        .n4 {
+    animation:
+        petaloTulipan 10s linear infinite;
 
-            top: 75%;
+}
 
-            right: 7%;
 
-            animation-delay: 2s;
+.petalos-tulipan span:nth-child(1) {
+    left: 4%;
+    animation-duration: 10s;
+}
 
-        }
+.petalos-tulipan span:nth-child(2) {
+    left: 13%;
+    animation-duration: 13s;
+    animation-delay: 2s;
+}
 
+.petalos-tulipan span:nth-child(3) {
+    left: 23%;
+    animation-duration: 9s;
+    animation-delay: 4s;
+}
 
-        .n5 {
+.petalos-tulipan span:nth-child(4) {
+    left: 34%;
+    animation-duration: 12s;
+    animation-delay: 1s;
+}
 
-            top: 43%;
+.petalos-tulipan span:nth-child(5) {
+    left: 45%;
+    animation-duration: 10s;
+    animation-delay: 5s;
+}
 
-            left: 14%;
+.petalos-tulipan span:nth-child(6) {
+    left: 55%;
+    animation-duration: 14s;
+    animation-delay: 2s;
+}
 
-            animation-delay: 1s;
+.petalos-tulipan span:nth-child(7) {
+    left: 65%;
+    animation-duration: 9s;
+    animation-delay: 6s;
+}
 
-        }
+.petalos-tulipan span:nth-child(8) {
+    left: 73%;
+    animation-duration: 12s;
+    animation-delay: 1s;
+}
 
+.petalos-tulipan span:nth-child(9) {
+    left: 82%;
+    animation-duration: 10s;
+    animation-delay: 3s;
+}
 
-        .n6 {
+.petalos-tulipan span:nth-child(10) {
+    left: 91%;
+    animation-duration: 14s;
+    animation-delay: 5s;
+}
 
-            top: 88%;
+.petalos-tulipan span:nth-child(11) {
+    left: 28%;
+    animation-duration: 15s;
+    animation-delay: 7s;
+}
 
-            right: 18%;
+.petalos-tulipan span:nth-child(12) {
+    left: 78%;
+    animation-duration: 11s;
+    animation-delay: 8s;
+}
 
-            animation-delay: 3.5s;
 
-        }
+/* =====================================================
+   CARTA
+===================================================== */
 
+.carta {
 
-        /* =====================================================
-           CONTENEDOR DE PÉTALOS DE TULIPÁN
-        ===================================================== */
+    display: none;
 
-        .petalos-tulipan {
+    min-height: 100vh;
 
-            position: fixed;
+    padding:
+        70px 20px 100px;
 
-            inset: 0;
+    position: relative;
 
-            width: 100%;
+    background:
 
-            height: 100%;
+        radial-gradient(
+            circle at top,
+            #2b1045 0%,
+            #12091a 35%,
+            #08060b 80%
+        );
 
-            pointer-events: none;
+}
 
-            overflow: hidden;
 
-            z-index: 20;
+.carta.activa {
 
-        }
+    display: block;
 
+    animation:
+        aparecerCarta 1.5s ease;
 
-        .petalos-tulipan span {
+}
 
-            position: absolute;
 
-            top: -50px;
+.contenido {
 
-            width: 17px;
+    max-width: 850px;
 
-            height: 28px;
+    margin: auto;
 
-            background:
+    text-align: center;
 
-                linear-gradient(
+    position: relative;
 
-                    135deg,
+    z-index: 5;
 
-                    #e9d5ff,
+}
 
-                    #a855f7 55%,
 
-                    #581c87
+/* =====================================================
+   TÍTULOS
+===================================================== */
 
-                );
+.titulo-seccion {
 
-            border-radius:
+    color: var(--morado-claro);
 
-                70% 25% 70% 25%;
+    font-size:
+        clamp(30px, 7vw, 48px);
 
-            opacity: 0;
+    margin-bottom: 30px;
 
-            filter:
+    text-shadow:
+        0 0 15px var(--morado),
+        0 0 35px rgba(168,85,247,.3);
 
-                drop-shadow(
+}
 
-                    0 0 5px rgba(168,85,247,0.55)
 
-                );
+.texto-carta {
 
-            animation:
+    font-size: 19px;
 
-                petaloTulipan 10s linear infinite;
+    line-height: 1.9;
 
-        }
+    color: #eeeeee;
 
+    margin-bottom: 50px;
 
-        .petalos-tulipan span:nth-child(1) {
+}
 
-            left: 4%;
 
-            animation-duration: 10s;
+/* =====================================================
+   DIVISORES
+===================================================== */
 
-            animation-delay: 0s;
+.divisor {
 
-        }
+    margin: 50px auto;
 
+    color: var(--morado-claro);
 
-        .petalos-tulipan span:nth-child(2) {
+    font-size: 25px;
 
-            left: 13%;
+    letter-spacing: 8px;
 
-            animation-duration: 13s;
+    text-shadow:
+        0 0 15px rgba(168,85,247,.6);
 
-            animation-delay: 2s;
+}
 
-            transform: scale(.7);
 
-        }
+/* =====================================================
+   TARJETAS
+===================================================== */
 
+.tarjetas {
 
-        .petalos-tulipan span:nth-child(3) {
+    display: grid;
 
-            left: 23%;
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
 
-            animation-duration: 9s;
+    gap: 25px;
 
-            animation-delay: 4s;
+    margin-top: 35px;
 
-            transform: scale(1.2);
+}
 
-        }
 
+.tarjeta {
 
-        .petalos-tulipan span:nth-child(4) {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(57,20,78,.85),
+            rgba(20,10,28,.95)
+        );
 
-            left: 34%;
+    border:
+        1px solid #8b3fc4;
 
-            animation-duration: 12s;
+    border-radius: 25px;
 
-            animation-delay: 1s;
+    padding: 30px 25px;
 
-            transform: scale(.8);
+    transition: .5s;
 
-        }
+    box-shadow:
+        0 0 20px rgba(168,85,247,.12);
 
+    position: relative;
 
-        .petalos-tulipan span:nth-child(5) {
+    overflow: hidden;
 
-            left: 45%;
+}
 
-            animation-duration: 10s;
 
-            animation-delay: 5s;
+.tarjeta::before {
 
-        }
+    content: "";
 
+    position: absolute;
 
-        .petalos-tulipan span:nth-child(6) {
+    top: -100%;
+    left: -50%;
 
-            left: 55%;
+    width: 200%;
+    height: 200%;
 
-            animation-duration: 14s;
+    background:
+        radial-gradient(
+            circle,
+            rgba(168,85,247,.12),
+            transparent 60%
+        );
 
-            animation-delay: 2s;
+    transition: .7s;
 
-            transform: scale(.65);
+    pointer-events: none;
 
-        }
+}
 
 
-        .petalos-tulipan span:nth-child(7) {
+.tarjeta:hover::before {
 
-            left: 65%;
+    top: -30%;
 
-            animation-duration: 9s;
+}
 
-            animation-delay: 6s;
 
-            transform: scale(1.15);
+.tarjeta:hover {
 
-        }
+    transform: translateY(-10px);
 
+    box-shadow:
+        0 0 35px rgba(168,85,247,.4);
 
-        .petalos-tulipan span:nth-child(8) {
+}
 
-            left: 73%;
 
-            animation-duration: 12s;
+.tarjeta h3 {
 
-            animation-delay: 1s;
+    color: var(--morado-claro);
 
-        }
+    font-size: 24px;
 
+    margin-bottom: 18px;
 
-        .petalos-tulipan span:nth-child(9) {
+    position: relative;
 
-            left: 82%;
+    z-index: 2;
 
-            animation-duration: 10s;
+}
 
-            animation-delay: 3s;
 
-            transform: scale(.75);
+.tarjeta p {
 
-        }
+    color: #ddd;
 
+    line-height: 1.8;
 
-        .petalos-tulipan span:nth-child(10) {
+    position: relative;
 
-            left: 91%;
+    z-index: 2;
 
-            animation-duration: 14s;
+}
 
-            animation-delay: 5s;
 
-            transform: scale(1.1);
+/* =====================================================
+   FOTOS
+===================================================== */
 
-        }
+.foto {
 
+    width: 100%;
 
-        .petalos-tulipan span:nth-child(11) {
+    max-width: 330px;
 
-            left: 28%;
+    height: 330px;
 
-            animation-duration: 15s;
+    object-fit: cover;
 
-            animation-delay: 7s;
+    border-radius: 20px;
 
-            transform: scale(.6);
+    border:
+        2px solid var(--morado);
 
-        }
+    margin: 20px auto;
 
+    display: block;
 
-        .petalos-tulipan span:nth-child(12) {
+    box-shadow:
+        0 0 25px rgba(168,85,247,.3);
 
-            left: 78%;
+    transition: .5s;
 
-            animation-duration: 11s;
+}
 
-            animation-delay: 8s;
 
-            transform: scale(.9);
+.foto:hover {
 
-        }
+    transform: scale(1.04);
 
+    box-shadow:
+        0 0 40px rgba(168,85,247,.6);
 
-        /* =====================================================
-           CARTA
-        ===================================================== */
+}
 
-        .carta {
 
-            display: none;
+/* =====================================================
+   MENSAJE
+===================================================== */
 
-            min-height: 100vh;
+.mensaje {
 
-            padding: 70px 20px 100px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(36,16,51,.85),
+            rgba(15,7,23,.9)
+        );
 
-            position: relative;
+    border-radius: 25px;
 
-            background:
+    padding: 40px 28px;
 
-                radial-gradient(
+    border:
+        1px solid #7436a5;
 
-                    circle at top,
+    margin-top: 30px;
 
-                    #2b1045 0%,
+    box-shadow:
+        0 0 25px rgba(168,85,247,.1);
 
-                    #12091a 35%,
+}
 
-                    #08060b 80%
 
-                );
+.mensaje p {
 
-        }
+    font-size: 20px;
 
+    line-height: 1.9;
 
-        .carta.activa {
+    color: #f3e8ff;
 
-            display: block;
+}
 
-            animation: aparecerCarta 1.5s ease;
 
-        }
+/* =====================================================
+   CORAZÓN
+===================================================== */
 
+.corazon {
 
-        .contenido {
+    font-size: 55px;
 
-            max-width: 850px;
+    margin: 40px 0;
 
-            margin: auto;
+    animation:
+        latido 1.5s infinite;
 
-            text-align: center;
+    filter:
+        drop-shadow(
+            0 0 12px rgba(168,85,247,.7)
+        );
 
-            position: relative;
+}
 
-            z-index: 5;
 
-        }
+/* =====================================================
+   FINAL
+===================================================== */
 
+.final {
 
-        /* =====================================================
-           TÍTULOS
-        ===================================================== */
+    padding-top: 80px;
 
-        .titulo-seccion {
+    padding-bottom: 60px;
 
-            color: var(--morado-claro);
+    position: relative;
 
-            font-size: clamp(30px, 7vw, 48px);
+}
 
-            margin-bottom: 30px;
 
-            text-shadow:
+.final h2 {
 
-                0 0 15px var(--morado),
+    color: var(--morado-claro);
 
-                0 0 35px rgba(168,85,247,0.3);
+    font-size:
+        clamp(30px, 7vw, 42px);
 
-        }
+    margin-bottom: 25px;
 
+    text-shadow:
+        0 0 20px var(--morado);
 
-        .texto-carta {
+}
 
-            font-size: 19px;
 
-            line-height: 1.9;
+.final p {
 
-            color: #eeeeee;
+    color: #ddd;
 
-            margin-bottom: 50px;
+    font-size: 19px;
 
-        }
+    line-height: 1.9;
 
+}
 
-        /* =====================================================
-           DIVISORES
-        ===================================================== */
 
-        .divisor {
+footer {
 
-            margin: 50px auto;
+    margin-top: 50px;
 
-            color: var(--morado-claro);
+    color: #9d7bb5;
 
-            font-size: 25px;
+    font-size: 14px;
 
-            letter-spacing: 8px;
+}
 
-            text-shadow:
 
-                0 0 15px rgba(168,85,247,0.6);
+/* =====================================================
+   BOTÓN MÚSICA
+===================================================== */
 
-        }
+.musica {
 
+    position: fixed;
 
-        /* =====================================================
-           TARJETAS
-        ===================================================== */
+    bottom: 20px;
 
-        .tarjetas {
+    right: 20px;
 
-            display: grid;
+    z-index: 100;
 
-            grid-template-columns:
+}
 
-                repeat(auto-fit, minmax(250px, 1fr));
 
-            gap: 25px;
+.boton-musica {
 
-            margin-top: 35px;
+    width: 58px;
+    height: 58px;
 
-        }
+    border-radius: 50%;
 
+    border:
+        2px solid var(--morado);
 
-        .tarjeta {
+    background:
+        rgba(20,8,30,.92);
 
-            background:
+    color: white;
 
-                linear-gradient(
+    font-size: 22px;
 
-                    145deg,
+    cursor: pointer;
 
-                    rgba(57,20,78,0.85),
+    box-shadow:
+        0 0 20px rgba(168,85,247,.5);
 
-                    rgba(20,10,28,0.95)
+    transition: .3s;
 
-                );
+}
 
-            border: 1px solid #8b3fc4;
 
-            border-radius: 25px;
+.boton-musica:hover {
 
-            padding: 30px 25px;
+    transform: scale(1.1);
 
-            transition: 0.5s;
+    box-shadow:
+        0 0 30px rgba(168,85,247,.8);
 
-            box-shadow:
+}
 
-                0 0 20px rgba(168,85,247,0.12);
 
-            position: relative;
+/* =====================================================
+   LLUVIA FINAL
+===================================================== */
 
-            overflow: hidden;
+.lluvia-final {
 
-        }
+    position: fixed;
 
+    inset: 0;
 
-        .tarjeta::before {
+    pointer-events: none;
 
-            content: "";
+    z-index: 150;
 
-            position: absolute;
+    display: none;
 
-            top: -100%;
+}
 
-            left: -50%;
 
-            width: 200%;
+.lluvia-final.activa {
 
-            height: 200%;
+    display: block;
 
-            background:
+}
 
-                radial-gradient(
 
-                    circle,
+.petalo-final {
 
-                    rgba(168,85,247,0.12),
+    position: absolute;
 
-                    transparent 60%
+    top: -50px;
 
-                );
+    width: 20px;
 
-            transition: 0.7s;
+    height: 32px;
 
-            pointer-events: none;
+    background:
+        linear-gradient(
+            135deg,
+            #f3e8ff,
+            #c084fc 50%,
+            #7e22ce
+        );
 
-        }
+    border-radius:
+        70% 25% 70% 25%;
 
+    opacity: 0;
 
-        .tarjeta:hover::before {
+    animation:
+        lluviaFinal 5s linear forwards;
 
-            top: -30%;
+    filter:
+        drop-shadow(
+            0 0 7px rgba(192,132,252,.8)
+        );
 
-        }
+}
 
 
-        .tarjeta:hover {
+.petalo-final:nth-child(1) {
+    left: 5%;
+}
 
-            transform: translateY(-10px);
+.petalo-final:nth-child(2) {
+    left: 15%;
+    animation-delay: .3s;
+}
 
-            box-shadow:
+.petalo-final:nth-child(3) {
+    left: 25%;
+    animation-delay: .6s;
+}
 
-                0 0 35px rgba(168,85,247,0.4);
+.petalo-final:nth-child(4) {
+    left: 35%;
+    animation-delay: .9s;
+}
 
-        }
+.petalo-final:nth-child(5) {
+    left: 45%;
+    animation-delay: 1.2s;
+}
 
+.petalo-final:nth-child(6) {
+    left: 55%;
+    animation-delay: .5s;
+}
 
-        .tarjeta h3 {
+.petalo-final:nth-child(7) {
+    left: 65%;
+    animation-delay: 1.1s;
+}
 
-            color: var(--morado-claro);
+.petalo-final:nth-child(8) {
+    left: 75%;
+    animation-delay: .7s;
+}
 
-            font-size: 24px;
+.petalo-final:nth-child(9) {
+    left: 85%;
+    animation-delay: .2s;
+}
 
-            margin-bottom: 18px;
+.petalo-final:nth-child(10) {
+    left: 95%;
+    animation-delay: 1.4s;
+}
 
-            position: relative;
 
-            z-index: 2;
+/* =====================================================
+   BOTÓN VOLVER A LEER
+===================================================== */
 
-        }
+.volver {
 
+    margin-top: 45px;
 
-        .tarjeta p {
+    padding:
+        14px 28px;
 
-            color: #ddd;
+    border:
+        1px solid var(--morado);
 
-            line-height: 1.8;
+    border-radius: 40px;
 
-            position: relative;
+    background:
+        rgba(168,85,247,.12);
 
-            z-index: 2;
+    color:
+        var(--morado-claro);
 
-        }
+    font-size: 17px;
 
+    cursor: pointer;
 
-        /* =====================================================
-           FOTOS
-        ===================================================== */
+    transition: .4s;
 
-        .foto {
+}
 
-            width: 100%;
 
-            max-width: 330px;
+.volver:hover {
 
-            height: 330px;
+    background:
+        var(--morado);
 
-            object-fit: cover;
+    color: white;
 
-            border-radius: 20px;
+    transform:
+        scale(1.06);
 
-            border: 2px solid var(--morado);
+    box-shadow:
+        0 0 25px rgba(168,85,247,.7);
 
-            margin: 20px auto;
+}
 
-            display: block;
 
-            box-shadow:
+/* =====================================================
+   ANIMACIONES
+===================================================== */
 
-                0 0 25px rgba(168,85,247,0.3);
+@keyframes aparecer {
 
-            transition: 0.5s;
+    from {
 
-            position: relative;
+        opacity: 0;
 
-            z-index: 2;
+        transform:
+            translateY(30px);
 
-        }
+    }
 
+    to {
 
-        .foto:hover {
+        opacity: 1;
 
-            transform: scale(1.04);
+        transform:
+            translateY(0);
 
-            box-shadow:
+    }
 
-                0 0 40px rgba(168,85,247,0.6);
+}
 
-        }
 
+@keyframes aparecerCarta {
 
-        /* =====================================================
-           MENSAJE
-        ===================================================== */
+    from {
 
-        .mensaje {
+        opacity: 0;
 
-            background:
+        transform:
+            scale(.97);
 
-                linear-gradient(
+    }
 
-                    145deg,
+    to {
 
-                    rgba(36,16,51,0.85),
+        opacity: 1;
 
-                    rgba(15,7,23,0.9)
+        transform:
+            scale(1);
 
-                );
+    }
 
-            border-radius: 25px;
+}
 
-            padding: 40px 28px;
 
-            border: 1px solid #7436a5;
+@keyframes flotar {
 
-            margin-top: 30px;
+    0%, 100% {
 
-            box-shadow:
+        transform:
+            translateY(0);
 
-                0 0 25px rgba(168,85,247,0.1);
+    }
 
-        }
+    50% {
 
+        transform:
+            translateY(-12px);
 
-        .mensaje p {
+    }
 
-            font-size: 20px;
+}
 
-            line-height: 1.9;
 
-            color: #f3e8ff;
+@keyframes nubecitaFlotar {
 
-        }
+    0%, 100% {
 
+        transform:
+            translateY(0)
+            rotate(-4deg);
 
-        /* =====================================================
-           CORAZÓN
-        ===================================================== */
+    }
 
-        .corazon {
+    50% {
 
-            font-size: 55px;
+        transform:
+            translateY(-18px)
+            rotate(4deg);
 
-            margin: 40px 0;
+    }
 
-            animation: latido 1.5s infinite;
+}
 
-            filter:
 
-                drop-shadow(
+@keyframes latido {
 
-                    0 0 12px rgba(168,85,247,0.7)
+    0%, 100% {
 
-                );
+        transform:
+            scale(1);
 
-        }
+    }
 
+    50% {
 
-        /* =====================================================
-           FINAL
-        ===================================================== */
+        transform:
+            scale(1.2);
 
-        .final {
+    }
 
-            padding-top: 80px;
+}
 
-            padding-bottom: 40px;
 
-            position: relative;
+@keyframes petaloTulipan {
 
-        }
+    0% {
 
+        top: -50px;
 
-        .final h2 {
+        opacity: 0;
 
-            color: var(--morado-claro);
+        transform:
+            translateX(0)
+            rotate(0deg)
+            rotateY(0deg);
 
-            font-size: clamp(30px, 7vw, 42px);
+    }
 
-            margin-bottom: 25px;
+    10% {
 
-            text-shadow:
+        opacity: .85;
 
-                0 0 20px var(--morado);
+    }
 
-        }
+    30% {
 
+        transform:
+            translateX(45px)
+            rotate(90deg)
+            rotateY(90deg);
 
-        .final p {
+    }
 
-            color: #ddd;
+    50% {
 
-            font-size: 19px;
+        transform:
+            translateX(-35px)
+            rotate(180deg)
+            rotateY(180deg);
 
-            line-height: 1.9;
+    }
 
-        }
+    70% {
 
+        transform:
+            translateX(55px)
+            rotate(270deg)
+            rotateY(260deg);
 
-        footer {
+    }
 
-            margin-top: 50px;
+    90% {
 
-            color: #9d7bb5;
+        opacity: .65;
 
-            font-size: 14px;
+    }
 
-        }
+    100% {
 
+        top: 110vh;
 
-        /* =====================================================
-           BOTÓN DE MÚSICA
-        ===================================================== */
+        opacity: 0;
 
-        .musica {
+        transform:
+            translateX(-45px)
+            rotate(360deg)
+            rotateY(360deg);
 
-            position: fixed;
+    }
 
-            bottom: 20px;
+}
 
-            right: 20px;
 
-            z-index: 100;
+@keyframes lluviaFinal {
 
-        }
+    0% {
 
+        top: -50px;
 
-        .boton-musica {
+        opacity: 0;
 
-            width: 58px;
+        transform:
+            translateX(0)
+            rotate(0deg);
 
-            height: 58px;
+    }
 
-            border-radius: 50%;
+    10% {
 
-            border: 2px solid var(--morado);
+        opacity: 1;
 
-            background:
+    }
 
-                rgba(20,8,30,0.92);
+    50% {
 
-            color: white;
+        transform:
+            translateX(80px)
+            rotate(180deg);
 
-            font-size: 22px;
+    }
 
-            cursor: pointer;
+    100% {
 
-            box-shadow:
+        top: 110vh;
 
-                0 0 20px rgba(168,85,247,0.5);
+        opacity: 0;
 
-            transition: 0.3s;
+        transform:
+            translateX(-70px)
+            rotate(360deg);
 
-        }
+    }
 
+}
 
-        .boton-musica:hover {
 
-            transform: scale(1.1);
+/* =====================================================
+   CELULAR
+===================================================== */
 
-            box-shadow:
+@media (max-width: 600px) {
 
-                0 0 30px rgba(168,85,247,0.8);
+    .inicio {
 
-        }
+        padding:
+            25px 18px;
 
+    }
 
-        /* =====================================================
-           LLUVIA ESPECIAL DEL FINAL
-        ===================================================== */
 
-        .lluvia-final {
+    .inicio h1 {
 
-            position: fixed;
+        font-size: 42px;
 
-            inset: 0;
+    }
 
-            pointer-events: none;
 
-            z-index: 50;
+    .subtitulo-inicio {
 
-            display: none;
+        font-size: 27px;
 
-        }
+    }
 
 
-        .lluvia-final.activa {
+    .inicio p {
 
-            display: block;
+        font-size: 18px;
 
-        }
+    }
 
 
-        .petalo-final {
+    .carta {
 
-            position: absolute;
+        padding:
+            55px 15px 90px;
 
-            top: -50px;
+    }
 
-            width: 20px;
 
-            height: 32px;
+    .texto-carta {
 
-            background:
+        font-size: 17px;
 
-                linear-gradient(
+        line-height: 1.8;
 
-                    135deg,
+    }
 
-                    #f3e8ff,
 
-                    #c084fc 50%,
+    .tarjetas {
 
-                    #7e22ce
+        grid-template-columns:
+            1fr;
 
-                );
+    }
 
-            border-radius:
 
-                70% 25% 70% 25%;
+    .tarjeta {
 
-            opacity: 0;
+        padding:
+            28px 20px;
 
-            animation:
+    }
 
-                lluviaFinal 5s linear forwards;
 
-            filter:
+    .foto {
 
-                drop-shadow(
+        width: 100%;
 
-                    0 0 7px rgba(192,132,252,0.8)
+        max-width: 310px;
 
-                );
+        height: 310px;
 
-        }
+    }
 
 
-        .petalo-final:nth-child(1) {
+    .mensaje {
 
-            left: 5%;
+        padding:
+            30px 20px;
 
-            animation-delay: 0s;
+    }
 
-        }
 
+    .mensaje p {
 
-        .petalo-final:nth-child(2) {
+        font-size: 18px;
 
-            left: 15%;
+    }
 
-            animation-delay: .3s;
 
-        }
+    .nubecita {
 
+        font-size: 23px;
 
-        .petalo-final:nth-child(3) {
+    }
 
-            left: 25%;
 
-            animation-delay: .6s;
+    .boton {
 
-        }
+        font-size: 17px;
 
+        padding:
+            15px 28px;
 
-        .petalo-final:nth-child(4) {
+    }
 
-            left: 35%;
+}
 
-            animation-delay: .9s;
-
-        }
-
-
-        .petalo-final:nth-child(5) {
-
-            left: 45%;
-
-            animation-delay: 1.2s;
-
-        }
-
-
-        .petalo-final:nth-child(6) {
-
-            left: 55%;
-
-            animation-delay: .5s;
-
-        }
-
-
-        .petalo-final:nth-child(7) {
-
-            left: 65%;
-
-            animation-delay: 1.1s;
-
-        }
-
-
-        .petalo-final:nth-child(8) {
-
-            left: 75%;
-
-            animation-delay: .7s;
-
-        }
-
-
-        .petalo-final:nth-child(9) {
-
-            left: 85%;
-
-            animation-delay: .2s;
-
-        }
-
-
-        .petalo-final:nth-child(10) {
-
-            left: 95%;
-
-            animation-delay: 1.4s;
-
-        }
-
-
-        /* =====================================================
-           ANIMACIONES
-        ===================================================== */
-
-        @keyframes aparecer {
-
-            from {
-
-                opacity: 0;
-
-                transform: translateY(30px);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform: translateY(0);
-
-            }
-
-        }
-
-
-        @keyframes aparecerCarta {
-
-            from {
-
-                opacity: 0;
-
-                transform: scale(0.97);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform: scale(1);
-
-            }
-
-        }
-
-
-        @keyframes flotar {
-
-            0%, 100% {
-
-                transform: translateY(0);
-
-            }
-
-            50% {
-
-                transform: translateY(-12px);
-
-            }
-
-        }
-
-
-        @keyframes nubecitaFlotar {
-
-            0%, 100% {
-
-                transform:
-
-                    translateY(0)
-
-                    rotate(-4deg);
-
-            }
-
-            50% {
-
-                transform:
-
-                    translateY(-18px)
-
-                    rotate(4deg);
-
-            }
-
-        }
-
-
-        @keyframes latido {
-
-            0%, 100% {
-
-                transform: scale(1);
-
-            }
-
-            50% {
-
-                transform: scale(1.2);
-
-            }
-
-        }
-
-
-        @keyframes petaloTulipan {
-
-            0% {
-
-                top: -50px;
-
-                opacity: 0;
-
-                transform:
-
-                    translateX(0)
-
-                    rotate(0deg)
-
-                    rotateY(0deg);
-
-            }
-
-            10% {
-
-                opacity: .85;
-
-            }
-
-            30% {
-
-                transform:
-
-                    translateX(45px)
-
-                    rotate(90deg)
-
-                    rotateY(90deg);
-
-            }
-
-            50% {
-
-                transform:
-
-                    translateX(-35px)
-
-                    rotate(180deg)
-
-                    rotateY(180deg);
-
-            }
-
-            70% {
-
-                transform:
-
-                    translateX(55px)
-
-                    rotate(270deg)
-
-                    rotateY(260deg);
-
-            }
-
-            90% {
-
-                opacity: .65;
-
-            }
-
-            100% {
-
-                top: 110vh;
-
-                opacity: 0;
-
-                transform:
-
-                    translateX(-45px)
-
-                    rotate(360deg)
-
-                    rotateY(360deg);
-
-            }
-
-        }
-
-
-        @keyframes lluviaFinal {
-
-            0% {
-
-                top: -50px;
-
-                opacity: 0;
-
-                transform:
-
-                    translateX(0)
-
-                    rotate(0deg);
-
-            }
-
-            10% {
-
-                opacity: 1;
-
-            }
-
-            50% {
-
-                transform:
-
-                    translateX(80px)
-
-                    rotate(180deg);
-
-            }
-
-            100% {
-
-                top: 110vh;
-
-                opacity: 0;
-
-                transform:
-
-                    translateX(-70px)
-
-                    rotate(360deg);
-
-            }
-
-        }
-
-
-        /* =====================================================
-           CELULAR
-        ===================================================== */
-
-        @media (max-width: 600px) {
-
-            .inicio {
-
-                padding: 25px 18px;
-
-            }
-
-
-            .inicio h1 {
-
-                font-size: 42px;
-
-            }
-
-
-            .inicio p {
-
-                font-size: 18px;
-
-            }
-
-
-            .carta {
-
-                padding:
-
-                    55px 15px 90px;
-
-            }
-
-
-            .texto-carta {
-
-                font-size: 17px;
-
-                line-height: 1.8;
-
-            }
-
-
-            .tarjetas {
-
-                grid-template-columns: 1fr;
-
-            }
-
-
-            .tarjeta {
-
-                padding: 28px 20px;
-
-            }
-
-
-            .foto {
-
-                width: 100%;
-
-                max-width: 310px;
-
-                height: 310px;
-
-            }
-
-
-            .mensaje {
-
-                padding:
-
-                    30px 20px;
-
-            }
-
-
-            .mensaje p {
-
-                font-size: 18px;
-
-            }
-
-
-            .nubecita {
-
-                font-size: 23px;
-
-            }
-
-
-            .boton {
-
-                font-size: 17px;
-
-                padding:
-
-                    15px 28px;
-
-            }
-
-        }
-
-    </style>
+</style>
 
 </head>
 
@@ -1494,21 +1335,15 @@
 
 
 <!-- =====================================================
-     FLORES TIPO NUBECITA
+     FLORES / NUBECITAS
 ===================================================== -->
 
 <div class="nubecita n1">✿</div>
-
 <div class="nubecita n2">❀</div>
-
 <div class="nubecita n3">✿</div>
-
 <div class="nubecita n4">❀</div>
-
 <div class="nubecita n5">✿</div>
-
 <div class="nubecita n6">❀</div>
-
 
 
 <!-- =====================================================
@@ -1533,7 +1368,6 @@
 </div>
 
 
-
 <!-- =====================================================
      LLUVIA FINAL
 ===================================================== -->
@@ -1554,7 +1388,6 @@
     <div class="petalo-final"></div>
 
 </div>
-
 
 
 <!-- =====================================================
@@ -1586,7 +1419,6 @@
 </div>
 
 
-
 <!-- =====================================================
      PANTALLA INICIAL
 ===================================================== -->
@@ -1598,12 +1430,10 @@
 
     <div class="flores-inicio">
 
-        🌸 💜 🌷
+        🌷 💜 🌷
 
     </div>
 
-
-    <!-- ✏️ PUEDES CAMBIAR ESTE TÍTULO -->
 
     <h1>
 
@@ -1612,7 +1442,12 @@
     </h1>
 
 
-    <!-- ✏️ PUEDES CAMBIAR ESTE TEXTO -->
+    <div class="subtitulo-inicio">
+
+        Felicidades Bito
+
+    </div>
+
 
     <p>
 
@@ -1633,7 +1468,6 @@
 </section>
 
 
-
 <!-- =====================================================
      CARTA
 ===================================================== -->
@@ -1652,11 +1486,6 @@
 
         </div>
 
-
-
-        <!-- =================================================
-             PRIMERA PARTE
-        ================================================== -->
 
         <h2 class="titulo-seccion">
 
@@ -1685,13 +1514,11 @@
         </p>
 
 
-
         <div class="divisor">
 
             🌸 ─── 💜 ─── 🌸
 
         </div>
-
 
 
         <!-- =================================================
@@ -1728,13 +1555,11 @@
         </div>
 
 
-
         <div class="divisor">
 
             🌷 💜 🌷
 
         </div>
-
 
 
         <!-- =================================================
@@ -1771,13 +1596,11 @@
         </div>
 
 
-
         <div class="divisor">
 
             🌸 ─── 💜 ─── 🌸
 
         </div>
-
 
 
         <!-- =================================================
@@ -1813,13 +1636,11 @@
         </div>
 
 
-
         <div class="divisor">
 
             💜
 
         </div>
-
 
 
         <!-- =================================================
@@ -1856,7 +1677,6 @@
             </div>
 
 
-
             <div class="tarjeta">
 
                 <h3>
@@ -1874,7 +1694,6 @@
                 </p>
 
             </div>
-
 
 
             <div class="tarjeta">
@@ -1897,7 +1716,6 @@
 
 
         </div>
-
 
 
         <!-- =================================================
@@ -1943,6 +1761,17 @@
             </div>
 
 
+            <!-- BOTÓN NUEVO -->
+
+            <button
+                class="volver"
+                onclick="volverALeer()">
+
+                💜 Volver a leer
+
+            </button>
+
+
             <footer>
 
                 Hecho con cariño 💜
@@ -1958,72 +1787,77 @@
 </section>
 
 
-
 <script>
 
 
 /* =====================================================
-   ABRIR CARTA + MÚSICA
+   ABRIR CARTA
 ===================================================== */
 
 function abrirCarta() {
 
 
-    /* Ocultar inicio */
-
-    document
-        .getElementById("inicio")
-        .style.display = "none";
+    const inicio =
+        document.getElementById("inicio");
 
 
-    /* Mostrar carta */
+    const carta =
+        document.getElementById("carta");
 
-    document
-        .getElementById("carta")
-        .classList.add("activa");
-
-
-    /* Volver arriba */
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-
-    /* =================================================
-       REPRODUCIR MÚSICA
-
-       El navegador permite intentar reproducirla
-       porque esta función fue llamada por el toque
-       del usuario en "Abrir carta".
-    ================================================= */
 
     const musica =
         document.getElementById("musica");
 
 
-    musica
-        .play()
+    const botonMusica =
+        document.getElementById("botonMusica");
+
+
+    /* Animación de salida */
+
+    inicio.classList.add("oculta");
+
+
+    /* Esperar un poquito antes de mostrar carta */
+
+    setTimeout(function() {
+
+
+        inicio.style.display = "none";
+
+
+        carta.classList.add("activa");
+
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+
+    }, 700);
+
+
+    /* =================================================
+       MÚSICA
+    ================================================= */
+
+    musica.play()
+
         .then(function() {
 
-            document
-                .getElementById("botonMusica")
-                .innerHTML = "⏸️";
+            botonMusica.innerHTML = "⏸️";
 
         })
 
         .catch(function() {
 
-            document
-                .getElementById("botonMusica")
-                .innerHTML = "🎵";
+            botonMusica.innerHTML = "🎵";
 
         });
-
 
 }
 
@@ -2047,8 +1881,8 @@ function controlarMusica() {
     if (musica.paused) {
 
 
-        musica
-            .play()
+        musica.play()
+
             .then(function() {
 
                 boton.innerHTML = "⏸️";
@@ -2071,58 +1905,125 @@ function controlarMusica() {
 
 
 /* =====================================================
-   ACTIVAR LLUVIA ESPECIAL CUANDO LLEGA AL FINAL
+   VOLVER A LEER
 ===================================================== */
 
-const observador = new IntersectionObserver(
-
-    function(entradas) {
+function volverALeer() {
 
 
-        entradas.forEach(function(entrada) {
+    const carta =
+        document.getElementById("carta");
 
 
-            if (entrada.isIntersecting) {
+    const inicio =
+        document.getElementById("inicio");
 
 
-                const lluvia =
-                    document.getElementById("lluviaFinal");
+    const lluvia =
+        document.getElementById("lluviaFinal");
 
 
-                lluvia.classList.add("activa");
+    /* Quitar lluvia */
+
+    lluvia.classList.remove("activa");
 
 
-                /*
-                    Después de unos segundos
-                    quitamos la lluvia para que
-                    no quede permanentemente.
-                */
+    /* Ocultar carta */
 
-                setTimeout(function() {
+    carta.classList.remove("activa");
 
-                    lluvia.classList.remove("activa");
-
-                }, 7000);
+    carta.style.display = "none";
 
 
-            }
+    /* Mostrar portada */
 
-        });
-
-
-    },
-
-    {
-
-        threshold: 0.45
-
-    }
-
-);
+    inicio.style.display = "flex";
 
 
+    setTimeout(function() {
 
-/* Observar la sección final */
+        inicio.classList.remove("oculta");
+
+    }, 50);
+
+
+    /* Volver al principio */
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+
+/* =====================================================
+   LLUVIA DE PÉTALOS AL LLEGAR AL FINAL
+===================================================== */
+
+const observador =
+    new IntersectionObserver(
+
+        function(entradas) {
+
+
+            entradas.forEach(
+
+                function(entrada) {
+
+
+                    if (
+                        entrada.isIntersecting
+                    ) {
+
+
+                        const lluvia =
+                            document.getElementById(
+                                "lluviaFinal"
+                            );
+
+
+                        lluvia.classList.add(
+                            "activa"
+                        );
+
+
+                        setTimeout(
+
+                            function() {
+
+                                lluvia.classList.remove(
+                                    "activa"
+                                );
+
+                            },
+
+                            7000
+
+                        );
+
+
+                    }
+
+                }
+
+            );
+
+
+        },
+
+        {
+
+            threshold: .45
+
+        }
+
+    );
+
 
 observador.observe(
 
