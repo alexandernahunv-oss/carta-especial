@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Para alguien especial 💜</title>
 
+
     <style>
+
+        /* =====================================================
+           CONFIGURACIÓN GENERAL
+        ===================================================== */
 
         * {
             box-sizing: border-box;
@@ -25,86 +33,137 @@
             overflow-x: hidden;
         }
 
-        /* =========================
-           ✏️ EDITA AQUÍ
-        ========================= */
+
+        /* =====================================================
+           COLORES
+        ===================================================== */
 
         :root {
+
             --morado: #a855f7;
+
             --morado-claro: #d8b4fe;
+
             --morado-oscuro: #241033;
+
             --negro: #08060b;
+
+            --rosa: #c084fc;
+
         }
 
-        /* =========================
+
+        /* =====================================================
            PANTALLA INICIAL
-        ========================= */
+        ===================================================== */
 
         .inicio {
+
             min-height: 100vh;
 
             display: flex;
+
             flex-direction: column;
+
             justify-content: center;
+
             align-items: center;
 
             text-align: center;
 
             padding: 30px;
 
+            position: relative;
+
+            overflow: hidden;
+
             background:
+
                 radial-gradient(
+
                     circle at center,
+
                     #32124d 0%,
+
                     #14091d 40%,
+
                     #08060b 80%
+
                 );
 
-            position: relative;
-            overflow: hidden;
         }
 
+
         .inicio h1 {
+
             font-size: clamp(38px, 9vw, 70px);
+
             color: var(--morado-claro);
 
             text-shadow:
+
                 0 0 10px var(--morado),
-                0 0 30px var(--morado);
+
+                0 0 30px var(--morado),
+
+                0 0 60px rgba(168,85,247,0.4);
 
             margin-bottom: 20px;
 
             animation: aparecer 2s ease;
+
+            position: relative;
+
+            z-index: 5;
+
         }
 
+
         .inicio p {
+
             font-size: 20px;
+
             color: #eee;
 
             margin-bottom: 35px;
 
             animation: aparecer 2.5s ease;
+
+            position: relative;
+
+            z-index: 5;
+
         }
 
+
         .flores-inicio {
+
             font-size: 40px;
+
             margin-bottom: 25px;
 
             animation: flotar 3s ease-in-out infinite;
+
+            position: relative;
+
+            z-index: 5;
+
         }
 
-        /* =========================
-           BOTÓN
-        ========================= */
+
+        /* =====================================================
+           BOTÓN PRINCIPAL
+        ===================================================== */
 
         .boton {
+
             padding: 16px 32px;
 
             border: 2px solid var(--morado);
 
             border-radius: 50px;
 
-            background: rgba(168, 85, 247, 0.1);
+            background: rgba(168,85,247,0.1);
 
             color: white;
 
@@ -115,94 +174,410 @@
             transition: 0.4s;
 
             box-shadow:
-                0 0 15px rgba(168,85,247,0.5);
+
+                0 0 15px rgba(168,85,247,0.5),
+
+                inset 0 0 15px rgba(168,85,247,0.1);
 
             animation: aparecer 3s ease;
+
+            position: relative;
+
+            z-index: 10;
+
         }
 
+
         .boton:hover {
+
             background: var(--morado);
 
             transform: scale(1.08);
 
             box-shadow:
+
                 0 0 35px rgba(168,85,247,0.9);
+
         }
 
-        /* =========================
-           PÉTALOS
-        ========================= */
 
-        .petalo {
+        .boton:active {
+
+            transform: scale(0.96);
+
+        }
+
+
+        /* =====================================================
+           FLORES / NUBECITAS FLOTANTES
+        ===================================================== */
+
+        .nubecita {
+
+            position: fixed;
+
+            z-index: 3;
+
+            pointer-events: none;
+
+            color: var(--morado-claro);
+
+            font-size: 28px;
+
+            opacity: 0.55;
+
+            text-shadow:
+
+                0 0 12px rgba(168,85,247,0.8);
+
+            animation: nubecitaFlotar 6s ease-in-out infinite;
+
+        }
+
+
+        .n1 {
+
+            top: 12%;
+
+            left: 7%;
+
+        }
+
+
+        .n2 {
+
+            top: 25%;
+
+            right: 8%;
+
+            animation-delay: 1.5s;
+
+        }
+
+
+        .n3 {
+
+            top: 60%;
+
+            left: 5%;
+
+            animation-delay: 3s;
+
+        }
+
+
+        .n4 {
+
+            top: 75%;
+
+            right: 7%;
+
+            animation-delay: 2s;
+
+        }
+
+
+        .n5 {
+
+            top: 43%;
+
+            left: 14%;
+
+            animation-delay: 1s;
+
+        }
+
+
+        .n6 {
+
+            top: 88%;
+
+            right: 18%;
+
+            animation-delay: 3.5s;
+
+        }
+
+
+        /* =====================================================
+           CONTENEDOR DE PÉTALOS DE TULIPÁN
+        ===================================================== */
+
+        .petalos-tulipan {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            pointer-events: none;
+
+            overflow: hidden;
+
+            z-index: 20;
+
+        }
+
+
+        .petalos-tulipan span {
+
             position: absolute;
 
-            font-size: 25px;
+            top: -50px;
 
-            opacity: 0.7;
+            width: 17px;
 
-            animation: caer linear infinite;
+            height: 28px;
+
+            background:
+
+                linear-gradient(
+
+                    135deg,
+
+                    #e9d5ff,
+
+                    #a855f7 55%,
+
+                    #581c87
+
+                );
+
+            border-radius:
+
+                70% 25% 70% 25%;
+
+            opacity: 0;
+
+            filter:
+
+                drop-shadow(
+
+                    0 0 5px rgba(168,85,247,0.55)
+
+                );
+
+            animation:
+
+                petaloTulipan 10s linear infinite;
+
         }
 
-        .petalo:nth-child(1) {
-            left: 10%;
-            animation-duration: 8s;
-        }
 
-        .petalo:nth-child(2) {
-            left: 30%;
+        .petalos-tulipan span:nth-child(1) {
+
+            left: 4%;
+
             animation-duration: 10s;
+
+            animation-delay: 0s;
+
+        }
+
+
+        .petalos-tulipan span:nth-child(2) {
+
+            left: 13%;
+
+            animation-duration: 13s;
+
             animation-delay: 2s;
+
+            transform: scale(.7);
+
         }
 
-        .petalo:nth-child(3) {
-            left: 55%;
-            animation-duration: 7s;
+
+        .petalos-tulipan span:nth-child(3) {
+
+            left: 23%;
+
+            animation-duration: 9s;
+
+            animation-delay: 4s;
+
+            transform: scale(1.2);
+
+        }
+
+
+        .petalos-tulipan span:nth-child(4) {
+
+            left: 34%;
+
+            animation-duration: 12s;
+
             animation-delay: 1s;
+
+            transform: scale(.8);
+
         }
 
-        .petalo:nth-child(4) {
-            left: 80%;
-            animation-duration: 11s;
+
+        .petalos-tulipan span:nth-child(5) {
+
+            left: 45%;
+
+            animation-duration: 10s;
+
+            animation-delay: 5s;
+
+        }
+
+
+        .petalos-tulipan span:nth-child(6) {
+
+            left: 55%;
+
+            animation-duration: 14s;
+
+            animation-delay: 2s;
+
+            transform: scale(.65);
+
+        }
+
+
+        .petalos-tulipan span:nth-child(7) {
+
+            left: 65%;
+
+            animation-duration: 9s;
+
+            animation-delay: 6s;
+
+            transform: scale(1.15);
+
+        }
+
+
+        .petalos-tulipan span:nth-child(8) {
+
+            left: 73%;
+
+            animation-duration: 12s;
+
+            animation-delay: 1s;
+
+        }
+
+
+        .petalos-tulipan span:nth-child(9) {
+
+            left: 82%;
+
+            animation-duration: 10s;
+
             animation-delay: 3s;
+
+            transform: scale(.75);
+
         }
 
-        /* =========================
+
+        .petalos-tulipan span:nth-child(10) {
+
+            left: 91%;
+
+            animation-duration: 14s;
+
+            animation-delay: 5s;
+
+            transform: scale(1.1);
+
+        }
+
+
+        .petalos-tulipan span:nth-child(11) {
+
+            left: 28%;
+
+            animation-duration: 15s;
+
+            animation-delay: 7s;
+
+            transform: scale(.6);
+
+        }
+
+
+        .petalos-tulipan span:nth-child(12) {
+
+            left: 78%;
+
+            animation-duration: 11s;
+
+            animation-delay: 8s;
+
+            transform: scale(.9);
+
+        }
+
+
+        /* =====================================================
            CARTA
-        ========================= */
+        ===================================================== */
 
         .carta {
+
             display: none;
 
             min-height: 100vh;
 
+            padding: 70px 20px 100px;
+
+            position: relative;
+
             background:
-                linear-gradient(
-                    rgba(8,6,11,0.96),
-                    rgba(15,7,23,0.98)
+
+                radial-gradient(
+
+                    circle at top,
+
+                    #2b1045 0%,
+
+                    #12091a 35%,
+
+                    #08060b 80%
+
                 );
 
-            padding: 70px 20px;
         }
+
 
         .carta.activa {
+
             display: block;
 
-            animation: aparecer 1.5s ease;
+            animation: aparecerCarta 1.5s ease;
+
         }
 
+
         .contenido {
+
             max-width: 850px;
 
             margin: auto;
 
             text-align: center;
+
+            position: relative;
+
+            z-index: 5;
+
         }
 
-        /* =========================
-           TITULO
-        ========================= */
+
+        /* =====================================================
+           TÍTULOS
+        ===================================================== */
 
         .titulo-seccion {
+
             color: var(--morado-claro);
 
             font-size: clamp(30px, 7vw, 48px);
@@ -210,10 +585,16 @@
             margin-bottom: 30px;
 
             text-shadow:
-                0 0 15px var(--morado);
+
+                0 0 15px var(--morado),
+
+                0 0 35px rgba(168,85,247,0.3);
+
         }
 
+
         .texto-carta {
+
             font-size: 19px;
 
             line-height: 1.9;
@@ -221,81 +602,168 @@
             color: #eeeeee;
 
             margin-bottom: 50px;
+
         }
 
-        /* =========================
-           DIVISOR
-        ========================= */
+
+        /* =====================================================
+           DIVISORES
+        ===================================================== */
 
         .divisor {
+
             margin: 50px auto;
 
             color: var(--morado-claro);
 
             font-size: 25px;
+
+            letter-spacing: 8px;
+
+            text-shadow:
+
+                0 0 15px rgba(168,85,247,0.6);
+
         }
 
-        /* =========================
+
+        /* =====================================================
            TARJETAS
-        ========================= */
+        ===================================================== */
 
         .tarjetas {
+
             display: grid;
 
             grid-template-columns:
+
                 repeat(auto-fit, minmax(250px, 1fr));
 
             gap: 25px;
 
             margin-top: 35px;
+
         }
 
+
         .tarjeta {
+
             background:
+
                 linear-gradient(
+
                     145deg,
-                    rgba(57,20,78,0.8),
-                    rgba(20,10,28,0.9)
+
+                    rgba(57,20,78,0.85),
+
+                    rgba(20,10,28,0.95)
+
                 );
 
             border: 1px solid #8b3fc4;
 
             border-radius: 25px;
 
-            padding: 25px;
+            padding: 30px 25px;
 
             transition: 0.5s;
 
             box-shadow:
+
                 0 0 20px rgba(168,85,247,0.12);
+
+            position: relative;
+
+            overflow: hidden;
+
         }
 
+
+        .tarjeta::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: -100%;
+
+            left: -50%;
+
+            width: 200%;
+
+            height: 200%;
+
+            background:
+
+                radial-gradient(
+
+                    circle,
+
+                    rgba(168,85,247,0.12),
+
+                    transparent 60%
+
+                );
+
+            transition: 0.7s;
+
+            pointer-events: none;
+
+        }
+
+
+        .tarjeta:hover::before {
+
+            top: -30%;
+
+        }
+
+
         .tarjeta:hover {
+
             transform: translateY(-10px);
 
             box-shadow:
-                0 0 30px rgba(168,85,247,0.35);
+
+                0 0 35px rgba(168,85,247,0.4);
+
         }
 
+
         .tarjeta h3 {
+
             color: var(--morado-claro);
 
             font-size: 24px;
 
-            margin-bottom: 15px;
+            margin-bottom: 18px;
+
+            position: relative;
+
+            z-index: 2;
+
         }
+
 
         .tarjeta p {
+
             color: #ddd;
 
-            line-height: 1.7;
+            line-height: 1.8;
+
+            position: relative;
+
+            z-index: 2;
+
         }
 
-        /* =========================
+
+        /* =====================================================
            FOTOS
-        ========================= */
+        ===================================================== */
 
         .foto {
+
             width: 100%;
 
             max-width: 330px;
@@ -313,145 +781,712 @@
             display: block;
 
             box-shadow:
+
                 0 0 25px rgba(168,85,247,0.3);
 
             transition: 0.5s;
+
+            position: relative;
+
+            z-index: 2;
+
         }
+
 
         .foto:hover {
-            transform: scale(1.03);
+
+            transform: scale(1.04);
 
             box-shadow:
+
                 0 0 40px rgba(168,85,247,0.6);
+
         }
 
-        /* =========================
-           MENSAJE ESPECIAL
-        ========================= */
+
+        /* =====================================================
+           MENSAJE
+        ===================================================== */
 
         .mensaje {
-            background: rgba(36,16,51,0.7);
+
+            background:
+
+                linear-gradient(
+
+                    145deg,
+
+                    rgba(36,16,51,0.85),
+
+                    rgba(15,7,23,0.9)
+
+                );
 
             border-radius: 25px;
 
-            padding: 35px 25px;
+            padding: 40px 28px;
 
             border: 1px solid #7436a5;
 
             margin-top: 30px;
+
+            box-shadow:
+
+                0 0 25px rgba(168,85,247,0.1);
+
         }
 
+
         .mensaje p {
+
             font-size: 20px;
 
             line-height: 1.9;
 
             color: #f3e8ff;
+
         }
 
-        /* =========================
+
+        /* =====================================================
            CORAZÓN
-        ========================= */
+        ===================================================== */
 
         .corazon {
+
             font-size: 55px;
 
             margin: 40px 0;
 
             animation: latido 1.5s infinite;
+
+            filter:
+
+                drop-shadow(
+
+                    0 0 12px rgba(168,85,247,0.7)
+
+                );
+
         }
 
-        /* =========================
+
+        /* =====================================================
            FINAL
-        ========================= */
+        ===================================================== */
 
         .final {
-            padding-top: 70px;
+
+            padding-top: 80px;
 
             padding-bottom: 40px;
+
+            position: relative;
+
         }
+
 
         .final h2 {
+
             color: var(--morado-claro);
 
-            font-size: 35px;
+            font-size: clamp(30px, 7vw, 42px);
 
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+
+            text-shadow:
+
+                0 0 20px var(--morado);
+
         }
+
 
         .final p {
+
             color: #ddd;
 
-            font-size: 18px;
+            font-size: 19px;
 
-            line-height: 1.8;
+            line-height: 1.9;
+
         }
 
+
         footer {
+
             margin-top: 50px;
 
             color: #9d7bb5;
 
             font-size: 14px;
+
         }
 
-        /* =========================
+
+        /* =====================================================
+           BOTÓN DE MÚSICA
+        ===================================================== */
+
+        .musica {
+
+            position: fixed;
+
+            bottom: 20px;
+
+            right: 20px;
+
+            z-index: 100;
+
+        }
+
+
+        .boton-musica {
+
+            width: 58px;
+
+            height: 58px;
+
+            border-radius: 50%;
+
+            border: 2px solid var(--morado);
+
+            background:
+
+                rgba(20,8,30,0.92);
+
+            color: white;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            box-shadow:
+
+                0 0 20px rgba(168,85,247,0.5);
+
+            transition: 0.3s;
+
+        }
+
+
+        .boton-musica:hover {
+
+            transform: scale(1.1);
+
+            box-shadow:
+
+                0 0 30px rgba(168,85,247,0.8);
+
+        }
+
+
+        /* =====================================================
+           LLUVIA ESPECIAL DEL FINAL
+        ===================================================== */
+
+        .lluvia-final {
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 50;
+
+            display: none;
+
+        }
+
+
+        .lluvia-final.activa {
+
+            display: block;
+
+        }
+
+
+        .petalo-final {
+
+            position: absolute;
+
+            top: -50px;
+
+            width: 20px;
+
+            height: 32px;
+
+            background:
+
+                linear-gradient(
+
+                    135deg,
+
+                    #f3e8ff,
+
+                    #c084fc 50%,
+
+                    #7e22ce
+
+                );
+
+            border-radius:
+
+                70% 25% 70% 25%;
+
+            opacity: 0;
+
+            animation:
+
+                lluviaFinal 5s linear forwards;
+
+            filter:
+
+                drop-shadow(
+
+                    0 0 7px rgba(192,132,252,0.8)
+
+                );
+
+        }
+
+
+        .petalo-final:nth-child(1) {
+
+            left: 5%;
+
+            animation-delay: 0s;
+
+        }
+
+
+        .petalo-final:nth-child(2) {
+
+            left: 15%;
+
+            animation-delay: .3s;
+
+        }
+
+
+        .petalo-final:nth-child(3) {
+
+            left: 25%;
+
+            animation-delay: .6s;
+
+        }
+
+
+        .petalo-final:nth-child(4) {
+
+            left: 35%;
+
+            animation-delay: .9s;
+
+        }
+
+
+        .petalo-final:nth-child(5) {
+
+            left: 45%;
+
+            animation-delay: 1.2s;
+
+        }
+
+
+        .petalo-final:nth-child(6) {
+
+            left: 55%;
+
+            animation-delay: .5s;
+
+        }
+
+
+        .petalo-final:nth-child(7) {
+
+            left: 65%;
+
+            animation-delay: 1.1s;
+
+        }
+
+
+        .petalo-final:nth-child(8) {
+
+            left: 75%;
+
+            animation-delay: .7s;
+
+        }
+
+
+        .petalo-final:nth-child(9) {
+
+            left: 85%;
+
+            animation-delay: .2s;
+
+        }
+
+
+        .petalo-final:nth-child(10) {
+
+            left: 95%;
+
+            animation-delay: 1.4s;
+
+        }
+
+
+        /* =====================================================
            ANIMACIONES
-        ========================= */
+        ===================================================== */
 
         @keyframes aparecer {
 
             from {
+
                 opacity: 0;
+
                 transform: translateY(30px);
+
             }
 
             to {
+
                 opacity: 1;
+
                 transform: translateY(0);
+
             }
 
         }
+
+
+        @keyframes aparecerCarta {
+
+            from {
+
+                opacity: 0;
+
+                transform: scale(0.97);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: scale(1);
+
+            }
+
+        }
+
 
         @keyframes flotar {
 
             0%, 100% {
+
                 transform: translateY(0);
+
             }
 
             50% {
+
                 transform: translateY(-12px);
+
             }
 
         }
+
+
+        @keyframes nubecitaFlotar {
+
+            0%, 100% {
+
+                transform:
+
+                    translateY(0)
+
+                    rotate(-4deg);
+
+            }
+
+            50% {
+
+                transform:
+
+                    translateY(-18px)
+
+                    rotate(4deg);
+
+            }
+
+        }
+
 
         @keyframes latido {
 
             0%, 100% {
+
                 transform: scale(1);
+
             }
 
             50% {
+
                 transform: scale(1.2);
+
             }
 
         }
 
-        @keyframes caer {
+
+        @keyframes petaloTulipan {
 
             0% {
-                top: -10%;
-                transform: rotate(0deg);
+
+                top: -50px;
+
+                opacity: 0;
+
+                transform:
+
+                    translateX(0)
+
+                    rotate(0deg)
+
+                    rotateY(0deg);
+
+            }
+
+            10% {
+
+                opacity: .85;
+
+            }
+
+            30% {
+
+                transform:
+
+                    translateX(45px)
+
+                    rotate(90deg)
+
+                    rotateY(90deg);
+
+            }
+
+            50% {
+
+                transform:
+
+                    translateX(-35px)
+
+                    rotate(180deg)
+
+                    rotateY(180deg);
+
+            }
+
+            70% {
+
+                transform:
+
+                    translateX(55px)
+
+                    rotate(270deg)
+
+                    rotateY(260deg);
+
+            }
+
+            90% {
+
+                opacity: .65;
+
             }
 
             100% {
-                top: 110%;
-                transform: rotate(360deg);
+
+                top: 110vh;
+
+                opacity: 0;
+
+                transform:
+
+                    translateX(-45px)
+
+                    rotate(360deg)
+
+                    rotateY(360deg);
+
+            }
+
+        }
+
+
+        @keyframes lluviaFinal {
+
+            0% {
+
+                top: -50px;
+
+                opacity: 0;
+
+                transform:
+
+                    translateX(0)
+
+                    rotate(0deg);
+
+            }
+
+            10% {
+
+                opacity: 1;
+
+            }
+
+            50% {
+
+                transform:
+
+                    translateX(80px)
+
+                    rotate(180deg);
+
+            }
+
+            100% {
+
+                top: 110vh;
+
+                opacity: 0;
+
+                transform:
+
+                    translateX(-70px)
+
+                    rotate(360deg);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           CELULAR
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .inicio {
+
+                padding: 25px 18px;
+
+            }
+
+
+            .inicio h1 {
+
+                font-size: 42px;
+
+            }
+
+
+            .inicio p {
+
+                font-size: 18px;
+
+            }
+
+
+            .carta {
+
+                padding:
+
+                    55px 15px 90px;
+
+            }
+
+
+            .texto-carta {
+
+                font-size: 17px;
+
+                line-height: 1.8;
+
+            }
+
+
+            .tarjetas {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .tarjeta {
+
+                padding: 28px 20px;
+
+            }
+
+
+            .foto {
+
+                width: 100%;
+
+                max-width: 310px;
+
+                height: 310px;
+
+            }
+
+
+            .mensaje {
+
+                padding:
+
+                    30px 20px;
+
+            }
+
+
+            .mensaje p {
+
+                font-size: 18px;
+
+            }
+
+
+            .nubecita {
+
+                font-size: 23px;
+
+            }
+
+
+            .boton {
+
+                font-size: 17px;
+
+                padding:
+
+                    15px 28px;
+
             }
 
         }
 
     </style>
+
 </head>
 
 
@@ -459,35 +1494,130 @@
 
 
 <!-- =====================================================
+     FLORES TIPO NUBECITA
+===================================================== -->
+
+<div class="nubecita n1">✿</div>
+
+<div class="nubecita n2">❀</div>
+
+<div class="nubecita n3">✿</div>
+
+<div class="nubecita n4">❀</div>
+
+<div class="nubecita n5">✿</div>
+
+<div class="nubecita n6">❀</div>
+
+
+
+<!-- =====================================================
+     PÉTALOS DE TULIPÁN
+===================================================== -->
+
+<div class="petalos-tulipan">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+</div>
+
+
+
+<!-- =====================================================
+     LLUVIA FINAL
+===================================================== -->
+
+<div
+    class="lluvia-final"
+    id="lluviaFinal">
+
+    <div class="petalo-final"></div>
+    <div class="petalo-final"></div>
+    <div class="petalo-final"></div>
+    <div class="petalo-final"></div>
+    <div class="petalo-final"></div>
+    <div class="petalo-final"></div>
+    <div class="petalo-final"></div>
+    <div class="petalo-final"></div>
+    <div class="petalo-final"></div>
+    <div class="petalo-final"></div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MÚSICA
+===================================================== -->
+
+<audio
+    id="musica"
+    loop>
+
+    <source
+        src="musica/cancion.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<div class="musica">
+
+    <button
+        class="boton-musica"
+        id="botonMusica"
+        onclick="controlarMusica()">
+
+        🎵
+
+    </button>
+
+</div>
+
+
+
+<!-- =====================================================
      PANTALLA INICIAL
 ===================================================== -->
 
-<section class="inicio" id="inicio">
-
-    <!-- Flores animadas -->
-
-    <div class="petalo">🌸</div>
-    <div class="petalo">🌷</div>
-    <div class="petalo">🌸</div>
-    <div class="petalo">🌷</div>
+<section
+    class="inicio"
+    id="inicio">
 
 
     <div class="flores-inicio">
+
         🌸 💜 🌷
+
     </div>
 
 
-    <!-- ✏️ CAMBIA ESTE TÍTULO -->
+    <!-- ✏️ PUEDES CAMBIAR ESTE TÍTULO -->
 
     <h1>
+
         Para alguien especial
+
     </h1>
 
 
-    <!-- ✏️ CAMBIA ESTE TEXTO -->
+    <!-- ✏️ PUEDES CAMBIAR ESTE TEXTO -->
 
     <p>
+
         Tengo algo que quiero decirte...
+
     </p>
 
 
@@ -498,6 +1628,7 @@
         💌 Abrir carta
 
     </button>
+
 
 </section>
 
@@ -516,18 +1647,23 @@
 
 
         <div class="corazon">
+
             💜
+
         </div>
 
 
-        <!-- ✏️ CAMBIA EL TÍTULO -->
+
+        <!-- =================================================
+             PRIMERA PARTE
+        ================================================== -->
 
         <h2 class="titulo-seccion">
+
             Hay cosas que merecen quedarse...
+
         </h2>
 
-
-        <!-- ✏️ CAMBIA EL TEXTO -->
 
         <p class="texto-carta">
 
@@ -551,7 +1687,9 @@
 
 
         <div class="divisor">
+
             🌸 ─── 💜 ─── 🌸
+
         </div>
 
 
@@ -563,20 +1701,11 @@
         <div class="tarjeta">
 
             <h3>
+
                 😊 Sonrisa que guardo
+
             </h3>
 
-
-            <!--
-            ✏️ AQUÍ PONDRÁS LA FOTO DE ELLA
-
-            Cuando tengas la foto, súbela a una carpeta
-            llamada "imagenes" y cambia:
-
-            foto-chica.jpg
-
-            por el nombre exacto de tu fotografía.
-            -->
 
             <img
                 class="foto"
@@ -584,12 +1713,12 @@
                 alt="Una sonrisa especial">
 
 
-            <!-- ✏️ CAMBIA ESTE TEXTO -->
-
             <p>
 
                 Hay sonrisas que simplemente hacen
                 que un momento se vuelva especial.
+
+                <br><br>
 
                 Y la tuya es una de esas que
                 quiero guardar.
@@ -601,7 +1730,9 @@
 
 
         <div class="divisor">
+
             🌷 💜 🌷
+
         </div>
 
 
@@ -613,17 +1744,11 @@
         <div class="tarjeta">
 
             <h3>
+
                 🐶 Un momento para recordar
+
             </h3>
 
-
-            <!--
-            ✏️ AQUÍ PONDRÁS LA FOTO DE LA PERRITA
-
-            Sube la foto a "imagenes" y cambia:
-
-            foto-perrita.jpg
-            -->
 
             <img
                 class="foto"
@@ -631,12 +1756,12 @@
                 alt="Un recuerdo especial">
 
 
-            <!-- ✏️ CAMBIA ESTE TEXTO -->
-
             <p>
 
                 Hay momentos pequeños que terminan
                 convirtiéndose en recuerdos enormes.
+
+                <br><br>
 
                 Este es uno de esos momentos
                 que vale la pena conservar.
@@ -648,7 +1773,9 @@
 
 
         <div class="divisor">
+
             🌸 ─── 💜 ─── 🌸
+
         </div>
 
 
@@ -658,13 +1785,13 @@
         ================================================== -->
 
         <h2 class="titulo-seccion">
+
             Lo que quiero decirte
+
         </h2>
 
 
         <div class="mensaje">
-
-            <!-- ✏️ ESCRIBE AQUÍ TU MENSAJE -->
 
             <p>
 
@@ -688,7 +1815,9 @@
 
 
         <div class="divisor">
+
             💜
+
         </div>
 
 
@@ -698,7 +1827,9 @@
         ================================================== -->
 
         <h2 class="titulo-seccion">
+
             Pequeños recuerdos 🌸
+
         </h2>
 
 
@@ -708,47 +1839,58 @@
             <div class="tarjeta">
 
                 <h3>
+
                     🌷 Un momento
+
                 </h3>
 
-                <!-- ✏️ CAMBIA EL TEXTO -->
 
                 <p>
+
                     Ese momento que quizá parecía
                     pequeño, pero que terminó siendo
                     importante.
+
                 </p>
 
             </div>
 
 
+
             <div class="tarjeta">
 
                 <h3>
+
                     💜 Una persona
+
                 </h3>
 
-                <!-- ✏️ CAMBIA EL TEXTO -->
 
                 <p>
+
                     Algunas personas dejan una huella
                     bonita sin siquiera darse cuenta.
+
                 </p>
 
             </div>
 
 
+
             <div class="tarjeta">
 
                 <h3>
+
                     🌸 Un recuerdo
+
                 </h3>
 
-                <!-- ✏️ CAMBIA EL TEXTO -->
 
                 <p>
+
                     Y algunos recuerdos merecen
                     quedarse para siempre.
+
                 </p>
 
             </div>
@@ -762,17 +1904,22 @@
              FINAL
         ================================================== -->
 
-        <div class="final">
+        <div
+            class="final"
+            id="final">
+
 
             <div class="corazon">
+
                 ❤️
+
             </div>
 
 
-            <!-- ✏️ CAMBIA EL MENSAJE FINAL -->
-
             <h2>
+
                 Gracias por existir
+
             </h2>
 
 
@@ -790,13 +1937,18 @@
 
 
             <div class="divisor">
+
                 🌸 💜 🌸
+
             </div>
 
 
             <footer>
+
                 Hecho con cariño 💜
+
             </footer>
+
 
         </div>
 
@@ -809,23 +1961,179 @@
 
 <script>
 
-    function abrirCarta() {
 
-        document.getElementById("inicio").style.display = "none";
+/* =====================================================
+   ABRIR CARTA + MÚSICA
+===================================================== */
 
-        document
-            .getElementById("carta")
-            .classList.add("activa");
+function abrirCarta() {
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+
+    /* Ocultar inicio */
+
+    document
+        .getElementById("inicio")
+        .style.display = "none";
+
+
+    /* Mostrar carta */
+
+    document
+        .getElementById("carta")
+        .classList.add("activa");
+
+
+    /* Volver arriba */
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+
+    /* =================================================
+       REPRODUCIR MÚSICA
+
+       El navegador permite intentar reproducirla
+       porque esta función fue llamada por el toque
+       del usuario en "Abrir carta".
+    ================================================= */
+
+    const musica =
+        document.getElementById("musica");
+
+
+    musica
+        .play()
+        .then(function() {
+
+            document
+                .getElementById("botonMusica")
+                .innerHTML = "⏸️";
+
+        })
+
+        .catch(function() {
+
+            document
+                .getElementById("botonMusica")
+                .innerHTML = "🎵";
+
         });
 
+
+}
+
+
+
+/* =====================================================
+   CONTROLAR MÚSICA
+===================================================== */
+
+function controlarMusica() {
+
+
+    const musica =
+        document.getElementById("musica");
+
+
+    const boton =
+        document.getElementById("botonMusica");
+
+
+    if (musica.paused) {
+
+
+        musica
+            .play()
+            .then(function() {
+
+                boton.innerHTML = "⏸️";
+
+            });
+
+
+    } else {
+
+
+        musica.pause();
+
+
+        boton.innerHTML = "🎵";
+
     }
+
+}
+
+
+
+/* =====================================================
+   ACTIVAR LLUVIA ESPECIAL CUANDO LLEGA AL FINAL
+===================================================== */
+
+const observador = new IntersectionObserver(
+
+    function(entradas) {
+
+
+        entradas.forEach(function(entrada) {
+
+
+            if (entrada.isIntersecting) {
+
+
+                const lluvia =
+                    document.getElementById("lluviaFinal");
+
+
+                lluvia.classList.add("activa");
+
+
+                /*
+                    Después de unos segundos
+                    quitamos la lluvia para que
+                    no quede permanentemente.
+                */
+
+                setTimeout(function() {
+
+                    lluvia.classList.remove("activa");
+
+                }, 7000);
+
+
+            }
+
+        });
+
+
+    },
+
+    {
+
+        threshold: 0.45
+
+    }
+
+);
+
+
+
+/* Observar la sección final */
+
+observador.observe(
+
+    document.getElementById("final")
+
+);
+
 
 </script>
 
 
 </body>
+
 </html>
