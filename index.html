@@ -1796,63 +1796,39 @@ footer {
 
 function abrirCarta() {
 
+    const inicio = document.getElementById("inicio");
+    const carta = document.getElementById("carta");
+    const musica = document.getElementById("musica");
+    const botonMusica = document.getElementById("botonMusica");
 
-    const inicio =
-        document.getElementById("inicio");
-
-
-    const carta =
-        document.getElementById("carta");
-
-
-    const musica =
-        document.getElementById("musica");
-
-
-    const botonMusica =
-        document.getElementById("botonMusica");
-
-
-    /* Animación de salida */
+    /* IMPORTANTE:
+       quitamos el display:none que quedó
+       después de volver a leer */
+    carta.style.display = "";
 
     inicio.classList.add("oculta");
 
-
-    /* Esperar un poquito antes de mostrar carta */
-
     setTimeout(function() {
-
 
         inicio.style.display = "none";
 
-
         carta.classList.add("activa");
 
-
         window.scrollTo({
-
             top: 0,
-
             behavior: "smooth"
-
         });
-
 
     }, 700);
 
-
-    /* =================================================
-       MÚSICA
-    ================================================= */
+    /* Música */
 
     musica.play()
-
         .then(function() {
 
             botonMusica.innerHTML = "⏸️";
 
         })
-
         .catch(function() {
 
             botonMusica.innerHTML = "🎵";
@@ -1910,35 +1886,28 @@ function controlarMusica() {
 
 function volverALeer() {
 
+    const carta = document.getElementById("carta");
+    const inicio = document.getElementById("inicio");
+    const lluvia = document.getElementById("lluviaFinal");
 
-    const carta =
-        document.getElementById("carta");
-
-
-    const inicio =
-        document.getElementById("inicio");
-
-
-    const lluvia =
-        document.getElementById("lluviaFinal");
-
-
-    /* Quitar lluvia */
+    /* Quitar la lluvia de pétalos */
 
     lluvia.classList.remove("activa");
-
 
     /* Ocultar carta */
 
     carta.classList.remove("activa");
 
-    carta.style.display = "none";
+    /*
+       NO dejamos display:none permanente.
+       Esto permite abrirla nuevamente.
+    */
 
+    carta.style.display = "";
 
     /* Mostrar portada */
 
     inicio.style.display = "flex";
-
 
     setTimeout(function() {
 
@@ -1946,15 +1915,11 @@ function volverALeer() {
 
     }, 50);
 
-
-    /* Volver al principio */
+    /* Volver arriba */
 
     window.scrollTo({
-
         top: 0,
-
         behavior: "smooth"
-
     });
 
 }
